@@ -23,7 +23,7 @@ config = dotenv_values(os.path.join(BASE_DIR, ".env"))
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY')
+SECRET_KEY = config['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -79,12 +79,12 @@ WSGI_APPLICATION = 'CinemaFan.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': os.getenv('DATABASE_ENGINE'),
-        'NAME': os.getenv('NAME'),
-        'USER': os.getenv('USER'),
-        'PASSWORD': os.getenv('PASSWORD'),
-        'HOST': os.getenv('HOST'),
-        'PORT': os.getenv('PORT'),
+        'ENGINE': config['DATABASE_ENGINE'],
+        'NAME': config['DATABASE_NAME'],
+        'USER': config['DATABASE_USER'],
+        'PASSWORD': config['DATABASE_PASSWORD'],
+        'HOST': config['DATABASE_HOST'],
+        'PORT': config['DATABASE_PORT'],
     }
 }
 
