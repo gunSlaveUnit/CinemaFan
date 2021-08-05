@@ -15,7 +15,3 @@ def signup(request):
     else:
         form = SignUpForm()
     return render(request, 'users/signup.html', {'form': form})
-
-
-def signin(request):
-    pass
