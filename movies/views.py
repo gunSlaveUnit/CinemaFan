@@ -1,3 +1,7 @@
-from django.shortcuts import render
+from django.views.generic import ListView
 
-# Create your views here.
+from movies.models import Movie
+
+
+class Movies(ListView):
+    queryset = Movie.objects.all()
