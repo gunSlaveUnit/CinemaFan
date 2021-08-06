@@ -2,7 +2,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
-from users.forms import SignUpForm
+from users.forms import SignUpForm, UpdateProfileForm, UpdateUserForm
 
 
 def signup(request):
@@ -20,4 +20,10 @@ def signup(request):
 
 @login_required
 def profile(request):
-    return render(request, 'users/profile.html')
+    update_user_form = UpdateUserForm()
+    update_profile_form = UpdateProfileForm()
+    context = {
+        'update_user_form': update_user_form,
+        'update_profile_form': update_profile_form,
+    }
+    return render(request, 'users/profile.html', context)
