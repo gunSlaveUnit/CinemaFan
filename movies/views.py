@@ -45,7 +45,8 @@ class MovieUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 class MovieDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Movie
     fields = '__all__'
-    template_name = 'movies/movie_create.html'
+    context_object_name = 'movie'
+    success_url = '/'
 
     def test_func(self):
         movie = self.get_object()

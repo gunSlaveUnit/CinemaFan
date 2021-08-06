@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        <h2>Are you sure you want to delete this: {{ movie.title }}?</h2>
+        <button type="submit">Yes, Delete This Movie</button>
+        <button type="submit"><a href="{% url 'movie' movie.slug %}">No</a></button>
+    </form>
+{% endblock %}
