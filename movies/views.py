@@ -8,6 +8,8 @@ class Movies(ListView):
     model = Movie
     queryset = Movie.objects.all()
     context_object_name = 'movies'
+    paginate_by = 1
+    ordering = ('title',)
 
 
 class MovieDetail(DetailView):
@@ -22,8 +24,8 @@ class MovieCreate(LoginRequiredMixin, CreateView):
     template_name = 'movies/movie_create.html'
 
     def form_valid(self, form):
-        if form.instance.author == self.request.user:
-            return super().form_valid(form)
+        form.instance.author = self.request.user
+        return super().form_valid(form)
 
 
 class MovieUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
