@@ -1,4 +1,4 @@
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView
 
 from movies.models import Movie
 
@@ -13,3 +13,7 @@ class Movie(DetailView):
     model = Movie
     slug_field = 'slug'
     context_object_name = 'movie'
+
+
+class CreateMovie(CreateView):
+    model = Movie
