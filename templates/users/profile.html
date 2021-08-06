@@ -7,4 +7,12 @@
         <h2>{{ user.username }}</h2>
         <h2>{{ user.email }}</h2>
     </div>
+    <div>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ update_user_form.as_p }}
+            {{ update_profile_form.as_p }}
+            <button type="submit">Update</button>
+        </form>
+    </div>
 {% endblock %}

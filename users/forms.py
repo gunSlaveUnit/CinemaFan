@@ -32,4 +32,4 @@ class UpdateUserForm(forms.ModelForm):
 class UpdateProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ('image')
+        fields = ('image',)
