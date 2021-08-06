@@ -20,8 +20,17 @@ def signup(request):
 
 @login_required
 def profile(request):
-    update_user_form = UpdateUserForm()
-    update_profile_form = UpdateProfileForm()
+    if request.method == 'POST':
+        update_user_form = UpdateUserForm(request.POST, instance=request.user)
+        update_profile_form = UpdateProfileForm(request.POST, request. FILES, instance=request.user.profile)
+        if update_user_form.is_valid() and update_profile_form.is_valid():
+            update_user_form.save()
+            update_profile_form.save()
+            messages.success(request, f'Account has been updated')
+            return redirect('profile')
+    else:
+        update_user_form = UpdateUserForm(instance=request.user)
+        update_profile_form = UpdateProfileForm(instance=request.user.profile)
     context = {
         'update_user_form': update_user_form,
         'update_profile_form': update_profile_form,
