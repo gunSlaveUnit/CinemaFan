@@ -1,5 +1,5 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import ListView, DetailView, CreateView
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
 
 from movies.models import Movie
 
@@ -22,5 +22,21 @@ class MovieCreate(LoginRequiredMixin, CreateView):
     template_name = 'movies/movie_create.html'
 
     def form_valid(self, form):
+        if form.instance.author == self.request.user:
+            return super().form_valid(form)
+
+
+class MovieUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Movie
+    fields = '__all__'
+    template_name = 'movies/movie_create.html'
+
+    def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
+
+    def test_func(self):
+        movie = self.get_object()
+        if self.request.user == movie.author:
+            return True
+        return False
