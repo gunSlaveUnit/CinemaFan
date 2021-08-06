@@ -7,7 +7,7 @@ from django.urls import reverse
 
 class Movie(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, default=User.username)
     title = models.CharField(max_length=100)
     tagline = models.CharField(max_length=100, default='')
     description = models.TextField()
