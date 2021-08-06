@@ -12,3 +12,4 @@ class Movies(ListView):
 class Movie(DetailView):
     model = Movie
     slug_field = 'slug'
+    context_object_name = 'movie'
