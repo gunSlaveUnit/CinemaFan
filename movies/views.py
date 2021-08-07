@@ -11,7 +11,7 @@ from movies.models import Movie
 
 class Movies(ListView):
     model = Movie
-    queryset = Movie.objects.filter({'draft': False})
+    queryset = Movie.objects.filter(draft=False)
     context_object_name = 'movies'
     paginate_by = 1
     ordering = ('title',)
