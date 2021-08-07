@@ -163,3 +163,11 @@ def show_toolbar(request):
 
 
 SHOW_TOOLBAR_CALLBACK = show_toolbar
+
+# cache settings
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        'LOCATION': os.path.join(BASE_DIR / 'cache')
+    }
+}
