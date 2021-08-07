@@ -1,3 +1,8 @@
+# TODO: add categories
+# TODO: customize models in admin panel
+# TODO: add 3**, 4** and 5** handlers
+# TODO: add tags
+
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
@@ -6,7 +11,7 @@ from movies.models import Movie
 
 class Movies(ListView):
     model = Movie
-    queryset = Movie.objects.all()
+    queryset = Movie.objects.filter({'draft': False})
     context_object_name = 'movies'
     paginate_by = 1
     ordering = ('title',)
