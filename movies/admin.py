@@ -5,7 +5,7 @@ from movies.models import Movie, Category
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    pass
+    prepopulated_fields = {'slug': ('name',)}
 
 
 @admin.register(Movie)
