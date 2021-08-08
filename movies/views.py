@@ -1,5 +1,4 @@
-# TODO: add categories
-# TODO: customize models in admin panel
+# TODO: add movie scenes and reviews
 # TODO: add 3**, 4** and 5** handlers
 # TODO: add tags
 
