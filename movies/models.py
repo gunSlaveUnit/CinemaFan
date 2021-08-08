@@ -8,13 +8,37 @@ from django.urls import reverse
 class Category(models.Model):
     name = models.CharField(max_length=30)
     description = models.TextField()
-    slug = models.SlugField(max_length=40)
+    slug = models.SlugField(max_length=40, unique=True)
 
     def __str__(self):
         return self.name
 
     class Meta:
         verbose_name_plural = 'Categories'
+
+
+class Position(models.Model):
+    """Description of the professions of people involved in the filming process"""
+    name = models.CharField(max_length=50)
+    description = models.TextField()
+    slug = models.SlugField(max_length=70, unique=True)
+
+    def __str__(self):
+        return self.name
+
+
+class Person(models.Model):
+    """Description of the people involved in the filming process:
+    directors, actors, screenwriters, etc."""
+    full_name = models.CharField(max_length=100)
+    position = models.ManyToManyField(Position)
+    date_birthday = models.DateField()
+    bio = models.TextField()
+    photo = models.ImageField(upload_to='persons/')
+    slug = models.SlugField(max_length=130, unique=True)
+
+    def __str__(self):
+        return self.full_name
 
 
 class Movie(models.Model):
@@ -24,6 +48,7 @@ class Movie(models.Model):
     tagline = models.CharField(max_length=100, default='')
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
     description = models.TextField()
+    persons = models.ManyToManyField(Person)
     poster = models.ImageField(upload_to="movies/")
     year = models.PositiveSmallIntegerField(default=2021)
     country = models.CharField(max_length=30)
