@@ -11,6 +11,21 @@
         <link type="text/css" rel="stylesheet" href="{% static 'reset.css' %}">
     </head>
     <body>
+        <header>
+            <nav>
+                {% if user.is_authenticated %}
+                    <a href="{% url 'home' %}">Home</a>
+                    <a href="{% url 'profile' %}">Profile</a>
+                    <a href="{% url 'movie_create' %}">Add Movie</a>
+                    <a href="{% url 'signout' %}">Sign Out</a>
+                {% else %}
+                    <a href="{% url 'home' %}">Home</a>
+                    <a href="{% url 'signin' %}">Sign Up</a>
+                    <a href="{% url 'signup' %}">Sign In</a>
+                {% endif %}
+            </nav>
+        </header>
+
         {% if messages %}
             {% for message in messages %}
                 {{ message }}
