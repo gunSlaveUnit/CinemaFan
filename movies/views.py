@@ -14,18 +14,21 @@ class Movies(ListView):
     context_object_name = 'movies'
     paginate_by = 1
     ordering = ('title',)
+    extra_context = {'title': 'Welcome to the club, buddy'}
 
 
 class MovieDetail(DetailView):
     model = Movie
     slug_field = 'slug'
     context_object_name = 'movie'
+    extra_context = {'title': 'movie.title'}
 
 
 class MovieCreate(LoginRequiredMixin, CreateView):
     model = Movie
     fields = '__all__'
     template_name = 'movies/movie_create.html'
+    extra_context = {'title': "So, you want to create a new movie for our service"}
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -36,6 +39,7 @@ class MovieUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Movie
     fields = '__all__'
     template_name = 'movies/movie_create.html'
+    extra_context = {'title': "Oh, something is wrong?"}
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -53,6 +57,7 @@ class MovieDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     fields = '__all__'
     context_object_name = 'movie'
     success_url = '/'
+    extra_context = {'title': "You want to delete something. Ok"}
 
     def test_func(self):
         movie = self.get_object()

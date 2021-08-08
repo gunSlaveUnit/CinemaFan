@@ -15,7 +15,7 @@ def signup(request):
             return redirect('signin')
     else:
         form = SignUpForm()
-    return render(request, 'users/signup.html', {'form': form})
+    return render(request, 'users/signup.html', {'title': 'Join Us Now', 'form': form})
 
 
 @login_required
@@ -32,6 +32,7 @@ def profile(request):
         update_user_form = UpdateUserForm(instance=request.user)
         update_profile_form = UpdateProfileForm(instance=request.user.profile)
     context = {
+        'title': "It's you",
         'update_user_form': update_user_form,
         'update_profile_form': update_profile_form,
     }

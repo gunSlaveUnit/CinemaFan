@@ -2,7 +2,11 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Test</title>
+        {% if title %}
+            <title>{{ title }}</title>
+        {% else %}
+            <title>CinemaFan</title>
+        {% endif %}
 
         <link type="text/css" rel="stylesheet" href="{% static 'reset.css' %}">
     </head>
