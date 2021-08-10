@@ -1,0 +1,12 @@
+body {
+    background-image: url("../media/background/lowpoly.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+}
+
+a, a:active, a:hover, a:visited {
+    text-decoration: none;
+    color: white;
+}

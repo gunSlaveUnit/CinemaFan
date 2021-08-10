@@ -1,8 +1,18 @@
 {% extends 'base.html' %}
 {% block content %}
-    {% for movie in movies %}
-        <a href="{% url 'movie' movie.slug %}"><h2>{{ movie.title }}</h2></a>
+    <div class="movies">
+        {% for movie in movies %}
+            <div class="movie grow">
+                <img class="poster" src="{{ movie.poster.url }}" alt="Movie Poster">
+                <a class="movie-information movie-title" href="{% url 'movie' movie.slug %}"><h2>{{ movie.title }}</h2></a>
+                <h4 class="movie-information movie-tagline">&laquo;{{ movie.tagline }}&raquo;</h4>
+                <h4 class="movie-information">{{ movie.category }}</h4>
+                <h4 class="movie-information movie-description">{{ movie.description }}</h4>
+                <h4 class="movie-information">{{ movie.year }}</h4>
+                <h4 class="movie-information">{{ movie.country }}</h4>
+            </div>
     {% endfor %}
+    </div>
 
     {% if page_obj.has_previous %}
         <a href="?page=1">First</a>

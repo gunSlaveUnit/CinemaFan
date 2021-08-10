@@ -1,0 +1,56 @@
+.movies {
+    display: flex;
+    border: 1px white solid;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 50%;
+    position: center;
+    align-items: flex-start;
+    align-content: space-around;
+}
+.movie {
+    width: 15%;
+    height: 50%;
+    border: 1px white solid;
+    background: linear-gradient(0deg, rgba(0,0,0,0.8), rgba(0,0,0,0));
+    border-radius: 10px;
+    box-shadow: 0 0 10px #000;
+}
+
+.poster {
+    width: 100%;
+    height: 50%;
+    position: center;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #000;
+}
+
+.movie-information {
+    color: white;
+    font-family: "Open Sans", sans-serif;
+}
+
+.movie-title {
+    font-size: large;
+    font-weight: bold;
+}
+
+.movie-tagline {
+    font-style: italic;
+}
+
+.grow{
+    transition: all .5s;
+    -moz-transition: all .5s;
+    -webkit-transition: all .5s;
+    -o-transition: all .5s;
+    -ms-transition: all .5s;
+}
+
+.grow:hover {
+ transform : scale(1.03);
+ -moz-transform : scale(1.03);
+ -webkit-transform : scale(1.03);
+ -o-transform : scale(1.03);
+ -ms-transform : scale(1.03);
+}

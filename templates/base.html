@@ -9,6 +9,10 @@
         {% endif %}
 
         <link type="text/css" rel="stylesheet" href="{% static 'reset.css' %}">
+        <link type="text/css" rel="stylesheet" href="{% static 'base.css' %}">
+        <link type="text/css" rel="stylesheet" href="{% static 'movies/movies.css' %}">
+        <link type="text/css" rel="stylesheet" href="{% static 'users/users.css' %}">
+        <link type="text/css" rel="stylesheet" href="{% static 'fonts/css/fonts.css' %}">
     </head>
     <body>
         <header>
@@ -31,7 +35,12 @@
                 {{ message }}
             {% endfor %}
         {% endif %}
-        {% block content %}
+        <main>
+            {% block content %}
         {% endblock %}
+        </main>
+        <footer>
+            &copy; CinemaFan, 2021. All rights reserved
+        </footer>
     </body>
 </html>

@@ -1,6 +1,7 @@
 # TODO: add movie scenes and reviews
 # TODO: add 3**, 4** and 5** handlers
 # TODO: add tags
+# TODO: tickets
 
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
@@ -12,7 +13,7 @@ class Movies(ListView):
     model = Movie
     queryset = Movie.objects.filter(draft=False)
     context_object_name = 'movies'
-    paginate_by = 1
+    paginate_by = 5
     ordering = ('title',)
     extra_context = {'title': 'Welcome to the club, buddy'}
 
