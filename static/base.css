@@ -1,9 +1,46 @@
+:root {
+    --menu-width: 37.5em;
+    --items: 0; /* count by js */
+    --item-width: calc(var(--menu-width) / var(--items));
+}
+
 body {
     background-image: url("../media/background/lowpoly.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
     background-attachment: fixed;
+}
+
+#menu {
+    display: flex;
+}
+
+nav .menu-item {
+    color: white;
+    font-weight: 600;
+    transform-style: preserve-3d;
+    flex-grow: 1;
+    display: flex;
+    flex-basis: var(--item-width);
+    box-sizing: border-box;
+    padding: 2.5em 2em;
+    justify-content: center;
+    perspective: 200px;
+    letter-spacing: 0.5px;
+}
+
+nav .menu-item, nav .menu-item a {
+    font-size: 1.5em;
+    color: white;
+    text-decoration: none;
+    text-shadow: 0 1px 5px rgba(0,0,0,0.1);
+    transition: color 0.1s ease-out;
+    text-align: center;
+}
+
+nav .menu-item a:hover {
+    color: rgba(255,255,255,0.5);
 }
 
 a, a:active, a:hover, a:visited {
