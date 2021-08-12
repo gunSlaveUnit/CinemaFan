@@ -24,7 +24,7 @@ nav .menu-item {
     display: flex;
     flex-basis: var(--item-width);
     box-sizing: border-box;
-    padding: 2.5em 2em;
+    padding: 2em 2em;
     justify-content: center;
     perspective: 200px;
     letter-spacing: 0.5px;
