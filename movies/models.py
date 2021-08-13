@@ -52,7 +52,6 @@ class Person(models.Model):
 
 class Movie(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
     tagline = models.CharField(max_length=100, default='')
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
