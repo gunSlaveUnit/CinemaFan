@@ -55,6 +55,7 @@ class Movie(models.Model):
     title = models.CharField(max_length=100)
     tagline = models.CharField(max_length=100, default='')
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
+    genres = models.ManyToManyField(Genre)
     description = models.TextField()
     persons = models.ManyToManyField(Person)
     poster = models.ImageField(upload_to="movies/")
