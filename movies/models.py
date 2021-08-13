@@ -17,6 +17,15 @@ class Category(models.Model):
         verbose_name_plural = 'Categories'
 
 
+class Genre(models.Model):
+    name = models.CharField(max_length=40)
+    description = models.TextField()
+    slug = models.SlugField(max_length=50, unique=True)
+
+    def __str__(self):
+        return self.name
+
+
 class Position(models.Model):
     """Description of the professions of people involved in the filming process"""
     name = models.CharField(max_length=50)
