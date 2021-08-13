@@ -77,7 +77,7 @@ class Movie(models.Model):
 class MovieScene(models.Model):
     title = models.CharField(max_length=150)
     slug = models.SlugField(max_length=130, unique=True)
-    image = models.ImageField(upload_to='/movie-scenes')
+    image = models.ImageField(upload_to='movie-scenes/')
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
 
     def __str__(self):
