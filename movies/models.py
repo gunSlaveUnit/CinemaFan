@@ -72,3 +72,13 @@ class Movie(models.Model):
 
     def get_absolute_url(self):
         return reverse('movie', kwargs={'slug': self.slug})
+
+
+class MovieScene(models.Model):
+    title = models.CharField(max_length=150)
+    slug = models.SlugField(max_length=130, unique=True)
+    image = models.ImageField(upload_to='/movie-scenes')
+    movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.title
