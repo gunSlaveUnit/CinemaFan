@@ -1,4 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
     <h2>{{ movie.title }}</h2>
+    {% for scene in movie.moviescene_set.all %}
+        <img src="{{ scene.image.url }}" alt="{{ movie.title }} scene">
+        <small>{{ scene.title }}</small>
+    {% endfor %}
 {% endblock %}
