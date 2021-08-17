@@ -4,8 +4,11 @@
 # TODO: tickets
 
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.shortcuts import redirect
+from django.views import View
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
+from movies.forms import ReviewForm
 from movies.models import Movie
 
 
@@ -65,3 +68,14 @@ class MovieDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         if self.request.user == movie.author:
             return True
         return False
+
+
+class AddReview(View):
+    def post(self, request, slug):
+        form = ReviewForm(request.POST)
+        movie = Movie.objects.get(slug=slug)
+        if form.is_valid():
+            form = form.save(commit=False)
+            form.movie = movie
+            form.save()
+        return redirect(movie.get_absolute_url())
