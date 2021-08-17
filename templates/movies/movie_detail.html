@@ -5,4 +5,20 @@
         <img src="{{ scene.image.url }}" alt="{{ movie.title }} scene">
         <small>{{ scene.title }}</small>
     {% endfor %}
+
+    <form action="#" method="post">
+        <label>
+            Your Comment *
+            <textarea id="comment" rows="5" required="required"></textarea>
+        </label>
+        <label>
+            User name *
+            <input id="username" required="required">
+        </label>
+        <label>
+            Email *
+            <input id="email" required="required">
+        </label>
+        <button type="submit">Send</button>
+    </form>
 {% endblock %}
