@@ -82,3 +82,14 @@ class MovieScene(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Review(models.Model):
+    parent_review = models.ForeignKey('self', on_delete=models.SET_NULL, blank=True, null=True)
+    email = models.EmailField()
+    username = models.CharField(max_length=40)
+    text = models.TextField(max_length=5000)
+    movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return rf'{self.movie.title}\: {self.username} {self.email}'

@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from movies.models import Movie, Category, Position, Person, Genre, MovieScene
+from movies.models import Movie, Category, Position, Person, Genre, MovieScene, Review
 
 
 @admin.register(Category)
@@ -31,3 +31,8 @@ class GenreAdmin(admin.ModelAdmin):
 @admin.register(MovieScene)
 class MovieSceneAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
+
+
+@admin.register(Review)
+class ReviewAdmin(admin.ModelAdmin):
+    pass
