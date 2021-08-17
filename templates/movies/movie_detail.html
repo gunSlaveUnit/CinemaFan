@@ -22,4 +22,9 @@
         </label>
         <button type="submit">Send</button>
     </form>
+
+    {% for review in movie.review_set.all %}
+        <h5>{{ review.username }}</h5>
+        <p>{{ review.text }}</p>
+    {% endfor %}
 {% endblock %}
