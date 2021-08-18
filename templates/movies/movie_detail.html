@@ -6,7 +6,8 @@
         <small>{{ scene.title }}</small>
     {% endfor %}
 
-    <form action="{% url 'add_review' movie.slug %}" method="post">
+    <form id="review" action="{% url 'add_review' movie.slug %}" method="post">
+        <input type="hidden" id="parent_review" name="parent_review" value="">
         {% csrf_token %}
         <label>
             Your Comment *
@@ -26,5 +27,14 @@
     {% for review in movie.review_set.all %}
         <h5>{{ review.username }}</h5>
         <p>{{ review.text }}</p>
+        <a href="#review" onclick="addReview('{{ review.id }}', '{{ review.username }}')">Answer</a>
+        {{ review.id }}
     {% endfor %}
+
+    <script>
+        function addReview(parentId, parentUsername) {
+            document.getElementById("parent_review").value = parentId;
+            document.getElementById("comment").innerText = parentUsername + ", ";
+        }
+    </script>
 {% endblock %}
