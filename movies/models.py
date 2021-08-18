@@ -73,6 +73,10 @@ class Movie(models.Model):
     def get_absolute_url(self):
         return reverse('movie', kwargs={'slug': self.slug})
 
+    def get_parent_reviews(self):
+        """Returns reviews for which the parent review is null"""
+        return self.review_set.filter(parent_review__isnull=True)
+
 
 class MovieScene(models.Model):
     title = models.CharField(max_length=150)
