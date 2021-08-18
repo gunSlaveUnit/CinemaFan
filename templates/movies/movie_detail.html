@@ -25,10 +25,16 @@
     </form>
 
     <h5>Comments: {{ movie.review_set.count }}</h5>
-    {% for review in movie.get_parent_reviews %}
-        <h5>{{ review.username }}</h5>
-        <p>{{ review.text }}</p>
-        <a href="#review" onclick="addReview('{{ review.id }}', '{{ review.username }}')">Answer</a>
+    {% for parent_review in movie.get_parent_reviews %}
+        <h5>{{ parent_review.username }}</h5>
+        <p>{{ parent_review.text }}</p>
+        <a href="#review" onclick="addReview('{{ parent_review.id }}', '{{ parent_review.username }}')">Answer</a>
+
+        {% for review in parent_review.review_set.all %}
+            <h5>{{ review.username }}</h5>
+            <p>{{ review.text }}</p>
+            <a href="#review" onclick="addReview('{{ review.id }}', '{{ review.username }}')">Answer</a>
+        {% endfor %}
     {% endfor %}
 
     <script>
