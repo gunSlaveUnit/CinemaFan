@@ -24,6 +24,7 @@
         <button type="submit">Send</button>
     </form>
 
+    <h5>Comments: {{ movie.review_set.count }}</h5>
     {% for review in movie.review_set.all %}
         <h5>{{ review.username }}</h5>
         <p>{{ review.text }}</p>
