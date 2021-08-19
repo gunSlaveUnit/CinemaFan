@@ -12,6 +12,8 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(Position)
 class PositionAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'description')
+    list_display_links = ('name',)
     prepopulated_fields = {'slug': ('name',)}
 
 
