@@ -41,4 +41,5 @@ class MovieSceneAdmin(admin.ModelAdmin):
 
 @admin.register(Review)
 class ReviewAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('parent_review', 'email', 'username', 'text', 'movie')
+    readonly_fields = ('email', 'username')
