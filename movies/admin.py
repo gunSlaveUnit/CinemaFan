@@ -30,10 +30,15 @@ class PersonAdmin(admin.ModelAdmin):
 
 @admin.register(Movie)
 class MovieAdmin(admin.ModelAdmin):
+    list_display = ('id', 'title', 'tagline', 'year', 'country', 'budget', 'description', 'draft')
+    list_display_links = ('title',)
     list_filter = ('category', 'genres', 'year', 'country', 'budget')
     search_fields = ('title', 'tagline', 'description')
     prepopulated_fields = {'slug': ('title',)}
     inlines = (ReviewInline,)
+    save_on_top = True
+    save_as = True
+    list_editable = ('draft',)
 
 
 @admin.register(Genre)
