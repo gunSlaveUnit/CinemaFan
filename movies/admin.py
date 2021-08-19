@@ -5,6 +5,8 @@ from movies.models import Movie, Category, Position, Person, Genre, MovieScene, 
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'description')
+    list_display_links = ('name',)
     prepopulated_fields = {'slug': ('name',)}
 
 
