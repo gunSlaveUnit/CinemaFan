@@ -3,6 +3,12 @@ from django.contrib import admin
 from movies.models import Movie, Category, Position, Person, Genre, MovieScene, Review
 
 
+class ReviewInline(admin.TabularInline):
+    model = Review
+    extra = 1
+    readonly_fields = ('email', 'username')
+
+
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'description')
@@ -27,6 +33,7 @@ class MovieAdmin(admin.ModelAdmin):
     list_filter = ('category', 'genres', 'year', 'country', 'budget')
     search_fields = ('title', 'tagline', 'description')
     prepopulated_fields = {'slug': ('title',)}
+    inlines = (ReviewInline,)
 
 
 @admin.register(Genre)
