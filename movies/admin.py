@@ -24,6 +24,8 @@ class PersonAdmin(admin.ModelAdmin):
 
 @admin.register(Movie)
 class MovieAdmin(admin.ModelAdmin):
+    list_filter = ('category', 'genres', 'year', 'country', 'budget')
+    search_fields = ('title', 'tagline', 'description')
     prepopulated_fields = {'slug': ('title',)}
 
 
