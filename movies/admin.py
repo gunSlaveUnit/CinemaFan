@@ -10,6 +10,17 @@ class ReviewInline(admin.TabularInline):
     readonly_fields = ('email', 'username')
 
 
+class MovieSceneInline(admin.TabularInline):
+    model = MovieScene
+    extra = 1
+    readonly_fields = ('get_image',)
+
+    def get_image(self, obj):
+        return mark_safe(f'<img src={obj.image.url} width=100 height=120>')
+
+    get_image.short_description = 'Movie Scene'
+
+
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'description')
@@ -43,7 +54,7 @@ class MovieAdmin(admin.ModelAdmin):
     list_filter = ('category', 'genres', 'year', 'country', 'budget')
     search_fields = ('title', 'tagline', 'description')
     prepopulated_fields = {'slug': ('title',)}
-    inlines = (ReviewInline,)
+    inlines = (MovieSceneInline, ReviewInline,)
     save_on_top = True
     save_as = True
     list_editable = ('draft',)
