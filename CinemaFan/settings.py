@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'ckeditor',
+    'ckeditor_uploader',
     'movies',
     'users',
     'django_cleanup',
@@ -133,6 +134,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static') # added to collect static files
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -172,3 +174,6 @@ CACHES = {
         'LOCATION': os.path.join(BASE_DIR / 'cache')
     }
 }
+
+# ckeditor settings
+CKEDITOR_UPLOAD_PATH = "uploads/"
