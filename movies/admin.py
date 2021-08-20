@@ -1,7 +1,18 @@
+from django import forms
 from django.contrib import admin
 from django.utils.safestring import mark_safe
 
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
+
 from movies.models import Movie, Category, Position, Person, Genre, MovieScene, Review
+
+
+class MovieAdminForm(forms.ModelForm):
+    description = forms.CharField(widget=CKEditorUploadingWidget())
+
+    class Meta:
+        model = Movie
+        fields = '__all__'
 
 
 class ReviewInline(admin.TabularInline):
@@ -59,6 +70,7 @@ class MovieAdmin(admin.ModelAdmin):
     save_as = True
     list_editable = ('draft',)
     readonly_fields = ('get_image',)
+    form = MovieAdminForm
 
     def get_image(self, obj):
         return mark_safe(f'<img src={obj.poster.url} width=50 height=60>')
