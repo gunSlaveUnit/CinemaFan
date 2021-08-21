@@ -20,11 +20,6 @@ class Movies(ListView):
     ordering = ('title',)
     extra_context = {'title': 'Welcome to the club, buddy'}
 
-    def get_context_data(self, *args, **kwargs):
-        context = super().get_context_data(*args, **kwargs)
-        context['categories'] = Category.objects.all()
-        return context
-
 
 class MovieDetail(DetailView):
     model = Movie
