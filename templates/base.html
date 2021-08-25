@@ -1,5 +1,4 @@
 {% load static %}
-{% load movie_tags %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -41,13 +40,6 @@
                 {% endif %}
             </nav>
         </header>
-
-        <ul>
-            {% get_categories as categories %}
-            {% for category in categories %}
-                <li><a href="/">{{ category.name }}</a></li>
-            {% endfor %}
-        </ul>
 
         {% if messages %}
             {% for message in messages %}

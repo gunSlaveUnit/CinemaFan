@@ -1,5 +1,33 @@
 {% extends 'base.html' %}
+{% load movie_tags %}
 {% block content %}
+     <ul>
+        {% get_categories as categories %}
+        {% for category in categories %}
+            <li><a href="/">{{ category.name }}</a></li>
+        {% endfor %}
+     </ul>
+
+    <ul>
+        {% get_genres as genres %}
+        {% for genre in genres %}
+            <label>
+                <input type="checkbox">
+                <span>{{ genre }}</span>
+            </label>
+        {% endfor %}
+    </ul>
+
+    <ul>
+        {% get_years as years %}
+        {% for movie in years %} <!-- to get year without (), -->
+            <label>
+                <input type="checkbox">
+                <span>{{ movie.year }}</span>
+            </label>
+        {% endfor %}
+    </ul>
+
     <div class="movies">
         {% for movie in movies %}
             <div class="movie grow">
