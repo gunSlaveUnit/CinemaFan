@@ -18,15 +18,19 @@
         {% endfor %}
     </ul>
 
-    <ul>
-        {% get_years as years %}
-        {% for movie in years %} <!-- to get year without (), -->
-            <label>
-                <input type="checkbox">
-                <span>{{ movie.year }}</span>
-            </label>
-        {% endfor %}
-    </ul>
+    <form action="/" method="post">
+        <ul>
+            {% get_years as years %}
+            {% for movie in years %} <!-- to get year without (), -->
+                <label>
+                    <input type="checkbox">
+                    <span>{{ movie.year }}</span>
+                </label>
+            {% endfor %}
+        </ul>
+        <button type="submit">Find</button>
+    </form>
+
 
     <div class="movies">
         {% for movie in movies %}
