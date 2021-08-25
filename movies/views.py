@@ -79,6 +79,11 @@ class MovieDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         return False
 
 
+class FilterMovie(ListView):
+    def get_queryset(self):
+        return Movie.objects.filter(year__in=self.request.GET.get("year"))
+
+
 class AddReview(View):
     def post(self, request, slug):
         form = ReviewForm(request.POST)
