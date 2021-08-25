@@ -10,7 +10,15 @@ from django.views import View
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 from movies.forms import ReviewForm
-from movies.models import Movie, Person
+from movies.models import Movie, Person, Genre
+
+
+class Filters:
+    def get_genres(self):
+        return Genre.objects.all()
+
+    def get_years(self):
+        return Movie.objects.filter(draft=False).values_list("year")
 
 
 class PersonDetail(DetailView):
@@ -21,7 +29,7 @@ class PersonDetail(DetailView):
     extra_context = {'title': "That's a good person"}
 
 
-class Movies(ListView):
+class Movies(ListView, Filters):
     model = Movie
     queryset = Movie.objects.filter(draft=False)
     context_object_name = 'movies'
