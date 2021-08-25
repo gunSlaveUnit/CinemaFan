@@ -18,12 +18,12 @@
         {% endfor %}
     </ul>
 
-    <form action="/" method="post">
+    <form action="{% url 'filter' %}" method="get">
         <ul>
             {% get_years as years %}
             {% for movie in years %} <!-- to get year without (), -->
                 <label>
-                    <input type="checkbox">
+                    <input type="checkbox" name="year" value="{{ movie.year }}">
                     <span>{{ movie.year }}</span>
                 </label>
             {% endfor %}
