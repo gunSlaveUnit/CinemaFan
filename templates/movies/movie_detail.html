@@ -1,7 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
     <h2>{{ movie.title }}</h2>
+
+    {% for person in movie.persons.all %}
+        <small><a href="{% url 'person' person.slug %}">{{ person.full_name }}</a></small>
+    {% endfor %}
+
     <p>{{ movie.description|safe }}</p>
+
     {% for scene in movie.moviescene_set.all %}
         <img src="{{ scene.image.url }}" alt="{{ movie.title }} scene">
         <small>{{ scene.title }}</small>

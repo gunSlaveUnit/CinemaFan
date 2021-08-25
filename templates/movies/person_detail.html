@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>{{ person.full_name }}</h2>
+    <p>{{ person.bio }}</p>
+    <img alt="Photo" src="{{ person.photo.url }}">
+{% endblock %}

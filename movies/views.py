@@ -2,6 +2,7 @@
 # TODO: add 3**, 4** and 5** handlers
 # TODO: add tags
 # TODO: tickets
+# TODO: add last films
 
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import redirect
@@ -9,7 +10,15 @@ from django.views import View
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 from movies.forms import ReviewForm
-from movies.models import Movie, Category
+from movies.models import Movie, Person
+
+
+class PersonDetail(DetailView):
+    model = Person
+    slug_field = 'slug'
+    template_name = 'movies/person_detail.html'
+    context_object_name = 'person'
+    extra_context = {'title': "That's a good person"}
 
 
 class Movies(ListView):

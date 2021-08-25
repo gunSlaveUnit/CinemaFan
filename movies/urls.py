@@ -3,7 +3,7 @@ from django.conf.urls.static import static
 from django.urls import path
 from django.views.decorators.cache import cache_page
 
-from movies.views import Movies, MovieDetail, MovieCreate, MovieUpdate, MovieDelete, AddReview
+from movies.views import Movies, MovieDetail, MovieCreate, MovieUpdate, MovieDelete, AddReview, PersonDetail
 
 urlpatterns = [
     path('', cache_page(60)(Movies.as_view()), name='home'),
@@ -12,6 +12,7 @@ urlpatterns = [
     path('movie/<slug:slug>/update', MovieUpdate.as_view(), name='movie_update'),
     path('movie/<slug:slug>/delete', MovieDelete.as_view(), name='movie_delete'),
     path('review/<slug:slug>', AddReview.as_view(), name='add_review'),
+    path('person/<slug:slug>', PersonDetail.as_view(), name='person'),
 ]
 
 if settings.DEBUG:
