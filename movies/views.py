@@ -81,7 +81,7 @@ class MovieDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 class FilterMovie(ListView):
     def get_queryset(self):
-        return Movie.objects.filter(year__in=self.request.GET.getlist("year"))
+        return Movie.objects.filter(year__in=self.request.GET.getlist("year"), genres__in=self.request.GET.getlist("genre"))
 
 
 class AddReview(View):

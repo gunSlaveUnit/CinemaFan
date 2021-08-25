@@ -8,17 +8,17 @@
         {% endfor %}
      </ul>
 
-    <ul>
-        {% get_genres as genres %}
-        {% for genre in genres %}
-            <label>
-                <input type="checkbox">
-                <span>{{ genre }}</span>
-            </label>
-        {% endfor %}
-    </ul>
-
     <form action="{% url 'filter' %}" method="get">
+        <ul>
+            {% get_genres as genres %}
+            {% for genre in genres %}
+                <label>
+                    <input type="checkbox" name="genre" value="{{ genre }}">
+                    <span>{{ genre }}</span>
+                </label>
+            {% endfor %}
+        </ul>
+
         <ul>
             {% get_years as years %}
             {% for movie in years %} <!-- to get year without (), -->
