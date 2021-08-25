@@ -5,6 +5,7 @@
 # TODO: add last films
 
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.db.models import Q
 from django.shortcuts import redirect
 from django.views import View
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
@@ -81,7 +82,7 @@ class MovieDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 class FilterMovie(ListView):
     def get_queryset(self):
-        return Movie.objects.filter(year__in=self.request.GET.getlist("year"), genres__in=self.request.GET.getlist("genre"))
+        return Movie.objects.filter(Q(year__in=self.request.GET.getlist("year")) | Q(genres__in=self.request.GET.getlist("genre")))
 
 
 class AddReview(View):
